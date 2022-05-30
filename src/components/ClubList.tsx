@@ -1,3 +1,5 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { ClubResType } from "../types";
@@ -25,38 +27,40 @@ const ClubList: React.FC<ClubListProps> = ({ clubs }) => {
     return (
       <>
         <div className={styles.club}>
-          <Container className="border border-4 rounded-3">
-            <Row className="row-cols-2">
-              <Col className="p-3">
-                <Row>
-                  <Image
-                    className={styles.logo}
-                    src={`${process.env.REACT_APP_URL}/api/club/${club.id}/logo`}
-                  ></Image>
-                </Row>
-                <Row className="pt-3">
-                  <Container className={styles.recruit}>
-                    {" "}
-                    {club.recruiting ? "모집중" : "모집 마감"}
-                  </Container>
-                </Row>
-              </Col>
-              <Col className="p-3">
-                <Row>
-                  <Container className={styles.name}> {club.name}</Container>
-                </Row>
-                <Row>
-                  <Container className={styles.detail}>
-                    {" "}
-                    {club.detail}
-                  </Container>
-                </Row>
-                <Row>
-                  <a onClick={() => showDetailForm(club)}>자세히 보기</a>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
+          <Row className="row-cols-2">
+            <Col>
+              <Row>
+                <Image
+                  className={styles.logo}
+                  src={`${process.env.REACT_APP_URL}/api/club/${club.id}/logo`}
+                ></Image>
+              </Row>
+              <Row>
+                <Container>
+                  {club.recruiting ? (
+                    <div className={styles.recruit}>recruit</div>
+                  ) : (
+                    <div className={styles.recruit_end}>recruit end</div>
+                  )}
+                </Container>
+              </Row>
+            </Col>
+            <Col>
+              <Row>
+                <Container className={styles.name}> {club.name}</Container>
+              </Row>
+              <Row>
+                <Container className={styles.detail}> {club.detail}</Container>
+              </Row>
+              <Container>
+                <FontAwesomeIcon
+                  className={styles.wish_star}
+                  icon={faStar}
+                  size="lg"
+                />
+              </Container>
+            </Col>
+          </Row>
         </div>
       </>
     );

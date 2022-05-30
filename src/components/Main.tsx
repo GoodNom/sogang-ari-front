@@ -8,6 +8,7 @@ import PageSideBar from "./PageSideBar";
 import FilterClub from "./FilterClub";
 
 import styles from "./Main.module.scss";
+import ClubList from "./ClubList";
 
 interface MainProps {
   wishs: WishResType[] | null;
@@ -79,6 +80,9 @@ const Main: React.FC<MainProps> = ({
             </Container>
             <Container>
               <FilterClub setClubs={setClubs} />
+            </Container>
+            <Container>
+              <ClubList clubs={clubs}></ClubList>
             </Container>
           </Col>
           <Col className="col-3">

@@ -12,6 +12,7 @@ export default class ClubService {
     const response = await axios.get(
       `${process.env.REACT_APP_URL}/${CLUB_BY_SECTION_API_URL}?section=${section}`
     );
+    console.log(response.data);
     return response.data.data;
   }
 
